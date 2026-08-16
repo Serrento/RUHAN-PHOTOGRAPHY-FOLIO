@@ -478,14 +478,14 @@
           <div class="row"><div class="lab">Location</div><span class="val">Chattogram, Bangladesh</span></div>
           <div class="socials">
             <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="LinkedIn">IN</a>
+            <a href="https://www.linkedin.com/in/mohammed-ruhan-87a9451a0" target="_blank" aria-label="LinkedIn">IN</a>
             <a href="#" aria-label="Behance">BE</a>
           </div>
         </div>
-        <form class="contact-form reveal" id="contactForm">
-          <div class="field"><label for="name">Name</label><input id="name" type="text" required></div>
-          <div class="field"><label for="email">Email</label><input id="email" type="email" required></div>
-          <div class="field"><label for="message">Message</label><textarea id="message" required></textarea></div>
+        <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/mdenlqpv" method="POST">
+          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+          <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
           <button type="submit" class="submit-btn">Send Message</button>
           <p class="form-note" id="formNote">Thanks — this is a template form; connect it to Formspree or a backend to actually receive messages.</p>
         </form>
@@ -615,11 +615,27 @@
     spineThread.style.setProperty('--prog', scrolled + '%');
   });
 
-  // Contact form (placeholder submit)
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
+  // Contact form -> Formspree
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    document.getElementById('formNote').classList.add('show');
-    e.target.reset();
+    const form = e.target;
+    const note = document.getElementById('formNote');
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        note.textContent = "Thanks — your message has been sent. I'll get back to you soon.";
+        form.reset();
+      } else {
+        note.textContent = "Something went wrong — please try again or email me directly.";
+      }
+    } catch (err) {
+      note.textContent = "Something went wrong — please try again or email me directly.";
+    }
+    note.classList.add('show');
   });
 </script>
 
