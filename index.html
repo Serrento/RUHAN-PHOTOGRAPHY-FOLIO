@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Ruhan — Photography</title>
+<meta name="description" content="Photography portfolio of Mohammed Ruhan — city nights, everyday characters, architecture and light, shot in Chattogram and beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0c0d;
+    --panel:#151517;
+    --panel-2:#1c1c1f;
+    --paper:#eee9df;
+    --amber:#e8a33d;
+    --dusk:#5a7ca6;
+    --line:#2b2b2e;
+    --muted:#8f8b81;
+    --rail-w:64px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--amber);color:var(--ink);}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;line-height:1.05;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--amber);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
+  @media(max-width:640px){.wrap{padding:0 22px;}}
+
+  /* ---------- Signature: left spine rail ---------- */
+  .spine{
+    position:fixed;left:0;top:0;bottom:0;width:var(--rail-w);
+    border-right:1px solid var(--line);
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    padding:28px 0;z-index:40;background:var(--ink);
+  }
+  .spine .mark{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--muted);writing-mode:vertical-rl;}
+  .spine .current{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    display:flex;align-items:center;gap:10px;color:var(--paper);transition:opacity .3s ease;
+  }
+  .spine .current .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;}
+  .spine .thread{width:1px;flex:1;background:var(--line);position:relative;margin:18px 0;overflow:hidden;}
+  .spine .thread::after{content:"";position:absolute;left:0;top:0;width:100%;background:var(--amber);height:var(--prog,0%);transition:height .2s linear;}
+  @media(max-width:900px){ .spine{display:none;} }
+  main{margin-left:var(--rail-w);}
+  @media(max-width:900px){ main{margin-left:0;} }
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:30;background:rgba(12,12,13,0.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;}
+  @media(max-width:640px){.nav-inner{padding:16px 22px;}}
+  .logo{font-family:'Fraunces',serif;font-size:19px;font-weight:600;letter-spacing:-0.01em;}
+  .logo span{color:var(--amber);}
+  .navlinks{display:flex;gap:28px;}
+  .navlinks a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);position:relative;padding-bottom:3px;transition:color .2s ease;}
+  .navlinks a:hover{color:var(--paper);}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--amber);transition:width .25s ease;}
+  .navlinks a:hover::after{width:100%;}
+  .navtoggle{display:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;border:1px solid var(--paper);color:var(--paper);padding:8px 12px;background:none;cursor:pointer;}
+  @media(max-width:900px){
+    .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--ink);flex-direction:column;gap:0;border-bottom:1px solid var(--line);transform:translateY(-110%);transition:transform .3s ease;padding:6px 22px;}
+    .navlinks.open{transform:translateY(0);}
+    .navlinks a{padding:14px 0;border-bottom:1px solid var(--line);}
+    .navtoggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:96vh;display:flex;flex-direction:column;justify-content:flex-end;
+    position:relative;padding:120px 0 70px;overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(0.95) brightness(0.55);}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,13,0.55) 0%, rgba(12,12,13,0.25) 35%, rgba(12,12,13,0.96) 100%);}
+  .hero > .wrap{position:relative;z-index:1;}
+  .hero .eyebrow{color:var(--amber);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+  .hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--amber);}
+  .hero h1{font-size:clamp(44px,7.5vw,96px);color:var(--paper);max-width:16ch;}
+  .hero h1 em{font-style:italic;color:var(--amber);font-weight:300;}
+  .hero .role{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.05em;color:var(--dusk);margin-top:20px;}
+  .hero .role .cursor{display:inline-block;width:8px;background:var(--dusk);margin-left:2px;animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero p.lede{max-width:54ch;margin-top:24px;color:rgba(238,233,223,0.78);font-size:17px;}
+  .hero .cta{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
+  .btn{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:15px 26px;border:1px solid var(--paper);color:var(--paper);transition:all .25s ease;display:inline-block;}
+  .btn:hover{background:var(--paper);color:var(--ink);}
+  .btn.solid{background:var(--amber);border-color:var(--amber);color:var(--ink);}
+  .btn.solid:hover{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  .hero-meta{margin-top:56px;display:flex;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(238,233,223,0.14);padding-top:24px;}
+  .hero-meta .num{font-family:'Fraunces',serif;font-size:28px;color:var(--amber);}
+  .hero-meta .lab{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(238,233,223,.55);margin-top:4px;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:110px 0;border-bottom:1px solid var(--line);}
+  @media(max-width:640px){section{padding:72px 0;}}
+  .section-head{max-width:640px;margin-bottom:60px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(28px,3.8vw,44px);}
+  .section-head p{color:var(--muted);margin-top:16px;font-size:16px;max-width:54ch;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:40px;}}
+  .about-intro h3{font-size:clamp(22px,3vw,30px);max-width:18ch;}
+  .about-intro p{margin-top:20px;color:var(--muted);max-width:46ch;}
+  .about-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .about-item{background:var(--panel);padding:26px 24px;}
+  .about-item .idx{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--amber);}
+  .about-item h4{font-size:16.5px;margin-top:12px;}
+  .about-item p{font-size:13.5px;color:var(--muted);margin-top:8px;}
+  @media(max-width:520px){.about-list{grid-template-columns:1fr;}}
+
+  /* ---------- Skills ---------- */
+  .skill-groups{display:grid;grid-template-columns:1fr 1fr;gap:0 60px;}
+  @media(max-width:820px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-group h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;padding-top:36px;border-top:1px solid var(--line);}
+  .skill-group:first-child h3, .skill-group:nth-child(2) h3{padding-top:0;border-top:none;}
+  .skill{margin-bottom:22px;}
+  .skill-top{display:flex;justify-content:space-between;font-size:14.5px;margin-bottom:8px;}
+  .skill-top .pct{font-family:'JetBrains Mono',monospace;color:var(--amber);}
+  .bar{height:3px;background:var(--panel-2);position:relative;overflow:hidden;}
+  .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--paper);transition:width 1.1s cubic-bezier(.2,.7,.2,1);}
+  .bar.amber i{background:var(--amber);}
+
+  /* ---------- Journey ---------- */
+  .timeline{border-top:1px solid var(--line);}
+  .tl-row{display:grid;grid-template-columns:170px 1fr;gap:36px;padding:32px 0;border-bottom:1px solid var(--line);}
+  @media(max-width:640px){.tl-row{grid-template-columns:1fr;gap:8px;}}
+  .tl-row .yr{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--amber);}
+  .tl-row h4{font-size:18px;margin-bottom:6px;}
+  .tl-row p{color:var(--muted);font-size:14.5px;max-width:58ch;}
+  .tl-row .tag{display:inline-block;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:5px 10px;color:var(--muted);}
+
+  /* ---------- Gallery ---------- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px;}
+  .filter-btn{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;border:1px solid var(--line);color:var(--muted);background:none;cursor:pointer;transition:all .2s ease;}
+  .filter-btn:hover{border-color:var(--paper);color:var(--paper);}
+  .filter-btn.active{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  .port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.port-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.port-grid{grid-template-columns:1fr;}}
+  .port-card{transition:opacity .35s ease,transform .35s ease;}
+  .port-card.hidden{display:none;}
+  .port-thumb{aspect-ratio:4/5;overflow:hidden;background:var(--panel-2);position:relative;cursor:pointer;}
+  .port-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s ease;filter:saturate(.97);}
+  .port-card:hover .port-thumb img{transform:scale(1.05);}
+  .port-info{padding:14px 2px 4px;}
+  .port-info h4{font-size:15.5px;font-weight:500;}
+  .port-info p{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5;}
+  .port-info .exif{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--amber);text-transform:uppercase;margin-top:8px;}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(6,6,7,0.94);z-index:100;display:none;align-items:center;justify-content:center;padding:40px;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:82vh;object-fit:contain;}
+  .lightbox .lb-cap{position:absolute;bottom:36px;left:0;right:0;text-align:center;color:var(--muted);font-size:13px;padding:0 20px;}
+  .lightbox .lb-close{position:absolute;top:28px;right:36px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--paper);border:1px solid var(--line);padding:8px 14px;cursor:pointer;background:none;}
+
+  /* ---------- Certificates / courses ---------- */
+  .cert-list{border-top:1px solid var(--line);}
+  .cert-row{display:grid;grid-template-columns:90px 1fr 200px;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--line);}
+  @media(max-width:640px){.cert-row{grid-template-columns:1fr;gap:6px;}}
+  .cert-row .tagnum{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--amber);}
+  .cert-row h4{font-size:17px;}
+  .cert-row p{font-size:13.5px;color:var(--muted);margin-top:4px;}
+  .cert-row .org{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-align:right;}
+  @media(max-width:640px){.cert-row .org{text-align:left;}}
+
+  /* ---------- CV ---------- */
+  .cv-card{background:var(--panel);border:1px solid var(--line);padding:54px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;}
+  @media(max-width:640px){.cv-card{padding:32px 24px;grid-template-columns:1fr;}}
+  .cv-card h3{font-size:clamp(24px,3.2vw,34px);}
+  .cv-card p{color:var(--muted);margin-top:14px;max-width:46ch;font-size:14.5px;}
+  .cv-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr;gap:44px;}}
+  .contact-info .row{padding:18px 0;border-top:1px solid var(--line);}
+  .contact-info .row:last-child{border-bottom:1px solid var(--line);}
+  .contact-info .row .lab{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+  .contact-info .row a, .contact-info .row .val{font-size:17px;margin-top:6px;display:block;}
+  .contact-info .row a:hover{color:var(--amber);}
+  .socials{display:flex;gap:14px;margin-top:26px;}
+  .socials a{width:38px;height:38px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;transition:all .2s ease;}
+  .socials a:hover{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  form.contact-form{display:flex;flex-direction:column;gap:22px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+  .field input,.field textarea{background:none;border:none;border-bottom:1px solid var(--line);padding:10px 2px;font-family:'Inter',sans-serif;font-size:15px;color:var(--paper);transition:border-color .2s ease;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--amber);}
+  .field textarea{resize:vertical;min-height:90px;}
+  .submit-btn{align-self:flex-start;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;background:var(--amber);color:var(--ink);border:1px solid var(--amber);cursor:pointer;transition:all .2s ease;}
+  .submit-btn:hover{background:var(--paper);border-color:var(--paper);}
+  .form-note{font-size:12.5px;color:var(--muted);margin-top:10px;display:none;}
+  .form-note.show{display:block;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:40px 0;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-inner p{font-size:13px;color:var(--muted);}
+  .footer-links{display:flex;gap:22px;}
+  .footer-links a{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+  .footer-links a:hover{color:var(--paper);}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="spine" aria-hidden="true">
+  <span class="mark">CTG · 2026</span>
+  <div class="thread" id="spineThread"></div>
+  <span class="current" id="spineCurrent"><span class="dot"></span>HOME</span>
+</div>
+
+<header class="nav">
+  <div class="nav-inner wrap" style="padding-left:0;padding-right:0;">
+    <a href="#home" class="logo">Ruhan<span>.</span></a>
+    <button class="navtoggle" id="navToggle">MENU</button>
+    <nav class="navlinks" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#journey">Journey</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#courses">Courses</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="hero" style="border-bottom:none;">
+    <div class="hero-bg"><img src="images/13-pink-sunset.jpeg" alt="Pink and blue sunset over Chattogram"></div>
+    <div class="wrap">
+      <p class="eyebrow">01 — Portfolio</p>
+      <h1>Mohammed Ruhan, <em>photographer.</em></h1>
+      <p class="role">Chattogram, Bangladesh<span class="cursor"></span></p>
+      <p class="lede">I shoot the city after dark, the quiet architecture people walk past without noticing, and the small, ordinary moments in between — a sleeping street dog, a cup of tea, a sky that only looks like that for two minutes.</p>
+      <div class="cta">
+        <a href="#gallery" class="btn solid">View Gallery</a>
+        <a href="#cv" class="btn">Download CV</a>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+      <div class="hero-meta">
+        <div><div class="num">18</div><div class="lab">Photos Featured</div></div>
+        <div><div class="num">4</div><div class="lab">Series</div></div>
+        <div><div class="num">CTG</div><div class="lab">Based In</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 — The Photographer</p>
+        <h2>Shooting light, not just scenes.</h2>
+        <p>This folio captures the city's life, atmosphere and lights alongside its natural surroundings — and how exposure, shadow and colour grading can turn an ordinary corridor or an empty road into something worth stopping for.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-intro reveal">
+          <h3>A Computer Science graduate with a camera habit.</h3>
+          <p>By training, I'm a Computer Science graduate from Brac University with a background in web development, Python and applied machine learning. Photography grew alongside that — late-night walks through Chattogram, university adventure club trips, and a habit of noticing how light falls on ordinary things.</p>
+        </div>
+        <div class="about-list reveal">
+          <div class="about-item">
+            <div class="idx">01</div>
+            <h4>Education</h4>
+            <p>BSc Computer Science, Brac University, Dhaka — 2021 to 2025</p>
+          </div>
+          <div class="about-item">
+            <div class="idx">02</div>
+            <h4>Focus</h4>
+            <p>City-at-night, architecture and space, everyday characters, light and colour</p>
+          </div>
+          <div class="about-item">
+            <div class="idx">03</div>
+            <h4>Base</h4>
+            <p>Chattogram, Bangladesh</p>
+          </div>
+          <div class="about-item">
+            <div class="idx">04</div>
+            <h4>Also into</h4>
+            <p>Football, cricket, Valorant &amp; FIFA, and Brac Adventure Club treks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">03 — Capabilities</p>
+        <h2>What goes into a frame.</h2>
+        <p>Photography skills sit alongside a technical toolkit — the same eye for detail shows up in both.</p>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group reveal">
+          <h3>Photography</h3>
+          <div class="skill"><div class="skill-top"><span>Exposure &amp; Shadow Control</span><span class="pct">90%</span></div><div class="bar amber"><i data-w="90"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Colour Grading</span><span class="pct">85%</span></div><div class="bar amber"><i data-w="85"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Composition &amp; Framing</span><span class="pct">88%</span></div><div class="bar amber"><i data-w="88"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Low-Light / Night Photography</span><span class="pct">92%</span></div><div class="bar amber"><i data-w="92"></i></div></div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Technical</h3>
+          <div class="skill"><div class="skill-top"><span>Python</span><span class="pct">85%</span></div><div class="bar"><i data-w="85"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>JavaScript / HTML / CSS</span><span class="pct">80%</span></div><div class="bar"><i data-w="80"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>PHP / MySQL</span><span class="pct">75%</span></div><div class="bar"><i data-w="75"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Image Processing (Python)</span><span class="pct">70%</span></div><div class="bar"><i data-w="70"></i></div></div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Working With People</h3>
+          <div class="skill"><div class="skill-top"><span>Communication</span><span class="pct">90%</span></div><div class="bar amber"><i data-w="90"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Team Collaboration</span><span class="pct">88%</span></div><div class="bar amber"><i data-w="88"></i></div></div>
+          <div class="skill"><div class="skill-top"><span>Attention to Detail</span><span class="pct">92%</span></div><div class="bar amber"><i data-w="92"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">04 — Journey</p>
+        <h2>Where the eye for this came from.</h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-row">
+          <div class="yr">2021 — 2025</div>
+          <div>
+            <h4>BSc Computer Science — Brac University, Dhaka</h4>
+            <p>GPA 3.3. Thesis on machine learning techniques for personalized alopecia areata intervention modeling. Director of Events &amp; Logistics for the Indoor Games Club; Junior Executive at the Adventure Club (2021–2023) — where a lot of the nature and landscape shots started.</p>
+            <span class="tag">Dhaka</span>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="yr">2020</div>
+          <div>
+            <h4>A-Level, Science — Presidency International School, Chattogram</h4>
+            <p>CGPA 3.77. Completed the Duke of Edinburgh's Award Programme; played wing for the school football team.</p>
+            <span class="tag">Chattogram</span>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="yr">2018</div>
+          <div>
+            <h4>O-Level, Science — Presidency International School, Chattogram</h4>
+            <p>CGPA 3.87.</p>
+            <span class="tag">Chattogram</span>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="yr">2021 — Present</div>
+          <div>
+            <h4>Student Tutor — Self-Employed</h4>
+            <p>Two years of one-on-one tutoring in Chattogram, alongside building a full-stack e-commerce project and, in parallel, shooting the photos in this gallery.</p>
+            <span class="tag">Ongoing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">05 — Gallery</p>
+        <h2>The full folio.</h2>
+        <p>Eighteen frames across four series — the city at night, everyday characters, architecture and space, and light and colour.</p>
+      </div>
+      <div class="filters reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="night">City at Night</button>
+        <button class="filter-btn" data-filter="characters">Everyday Characters</button>
+        <button class="filter-btn" data-filter="architecture">Architecture &amp; Space</button>
+        <button class="filter-btn" data-filter="light">Light &amp; Colour</button>
+      </div>
+      <div class="port-grid reveal" id="portGrid"></div>
+    </div>
+  </section>
+
+  <!-- COURSES / CERTIFICATES -->
+  <section id="courses">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">06 — Courses</p>
+        <h2>Recent coursework.</h2>
+        <p>Completed alongside the degree — the image-processing course in particular feeds straight back into how I edit.</p>
+      </div>
+      <div class="cert-list reveal">
+        <div class="cert-row">
+          <div class="tagnum">COURSE</div>
+          <div><h4>Image Processing in Python</h4><p>Filtering, transformations and pixel-level manipulation — the technical side of what happens after the shutter clicks.</p></div>
+          <div class="org">DataCamp</div>
+        </div>
+        <div class="cert-row">
+          <div class="tagnum">COURSE</div>
+          <div><h4>Introduction to LLMs in Python</h4><p>Applied coursework in large language models as part of the CS degree.</p></div>
+          <div class="org">DataCamp</div>
+        </div>
+        <div class="cert-row">
+          <div class="tagnum">AWARD</div>
+          <div><h4>Duke of Edinburgh's Award Programme</h4><p>Completed during A-Levels at Presidency International School.</p></div>
+          <div class="org">2018–2019</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">07 — Curriculum Vitae</p>
+        <h2>My résumé, in full.</h2>
+      </div>
+      <div class="cv-card reveal">
+        <div>
+          <h3>Mohammed Ruhan — Résumé</h3>
+          <p>Computer Science graduate, aspiring software developer, Chattogram, Bangladesh. Full work history, education and technical skills, available as a PDF.</p>
+        </div>
+        <div class="cv-actions">
+          <a href="MOHAMMED_RUHAN_Resume_Final.pdf" download class="btn solid">Download CV</a>
+          <a href="MOHAMMED_RUHAN_Resume_Final.pdf" target="_blank" class="btn">View CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">08 — Contact</p>
+        <h2>Let's talk photography, or anything else.</h2>
+        <p>Open to shoots, collaborations, and conversations about software too.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="row"><div class="lab">Email</div><a href="mailto:haisam22ruhan@gmail.com">haisam22ruhan@gmail.com</a></div>
+          <div class="row"><div class="lab">Phone</div><a href="tel:+8801793169211">+880 1793-169211</a></div>
+          <div class="row"><div class="lab">Location</div><span class="val">Chattogram, Bangladesh</span></div>
+          <div class="socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="LinkedIn">IN</a>
+            <a href="#" aria-label="Behance">BE</a>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <div class="field"><label for="name">Name</label><input id="name" type="text" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" required></div>
+          <div class="field"><label for="message">Message</label><textarea id="message" required></textarea></div>
+          <button type="submit" class="submit-btn">Send Message</button>
+          <p class="form-note" id="formNote">Thanks — this is a template form; connect it to Formspree or a backend to actually receive messages.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p>© 2026 Mohammed Ruhan. Shot in Chattogram and beyond.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">CLOSE ✕</button>
+  <img id="lbImg" src="" alt="">
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script>
+  // ---- Photo data ----
+  const photos = [
+    {src:'images/01-corridor.jpeg', title:'Corridor', cat:'night', tag:'City at Night', desc:"A quiet corridor where the warm lights and long shadows turn a simple walkway into a tunnel."},
+    {src:'images/02-misty-street.jpeg', title:'Misty Street', cat:'night', tag:'City at Night', desc:"A misty night street in the city, showing how alive and lonely the road can feel at the same time."},
+    {src:'images/03-blue-road.jpeg', title:'Empty Road', cat:'night', tag:'City at Night', desc:"An empty road that feels calm, cold, and slightly haunted."},
+    {src:'images/04-rooftop-city.jpeg', title:'Rooftop View', cat:'night', tag:'City at Night', desc:"A rooftop view showing the city calming down softly in the night."},
+    {src:'images/05-puppy.jpeg', title:'Sleeping Puppy', cat:'characters', tag:'Everyday Characters', desc:"A small puppy curled up in sleep, captured close so you can sense its warmth and innocence."},
+    {src:'images/06-guitars.jpeg', title:'Two Guitars', cat:'characters', tag:'Everyday Characters', desc:"Two guitars resting in front of a dark blue curtain, lit like silent characters waiting to be played."},
+    {src:'images/07-tea-cup.jpeg', title:'Cup of Tea', cat:'characters', tag:'Everyday Characters', desc:"A simple cup of tea that feels like a piece of home."},
+    {src:'images/08-burger.jpeg', title:'Late-Night Burger', cat:'characters', tag:'Everyday Characters', desc:"A stacked burger under warm bar light — an everyday moment worth freezing."},
+    {src:'images/09-escalator.jpeg', title:'Escalator Symmetry', cat:'architecture', tag:'Architecture & Space', desc:'"Journey to heaven" — an escalator arranged in perfect symmetry.'},
+    {src:'images/10-hall-people.jpeg', title:'The Hall', cat:'architecture', tag:'Architecture & Space', desc:"A large hall where light and space turn a few people into characters on a stage."},
+    {src:'images/11-hall-stairs.jpeg', title:'Hall & Staircase', cat:'architecture', tag:'Architecture & Space', desc:"A quiet hall and staircase that feels like a calm, cinematic set, waiting for the busy noise."},
+    {src:'images/12-glow-bulb.jpeg', title:'Glowing Bulb', cat:'light', tag:'Light & Colour', desc:"A glowing bulb in darkness, with bright filaments that look almost like a small burst of energy."},
+    {src:'images/13-pink-sunset.jpeg', title:'Pink Sky', cat:'light', tag:'Light & Colour', desc:"A pink-blue sunset over trees and buildings, caught for the short moment the sky looks painted."},
+    {src:'images/14-gold-sunset.jpeg', title:'Golden Sunset', cat:'light', tag:'Light & Colour', desc:"A golden-orange sunset over city buildings, soft clouds against hard silhouettes."},
+    {src:'images/15-stream.jpeg', title:'Mountain Stream', cat:'light', tag:'Light & Colour', desc:"A small stream running down, showing how water slowly shapes the rough landscape."},
+    {src:'images/16-railway.jpeg', title:'Railway Track', cat:'light', tag:'Light & Colour', desc:"A railway track in warm morning light, feeling like a daily journey about to start."},
+    {src:'images/17-forest-road.jpeg', title:'Forest Road', cat:'light', tag:'Light & Colour', desc:"A tree-lined road cutting through the hills, shade and sunlight trading places overhead."},
+    {src:'images/18-field-sunset.jpeg', title:'Field at Dusk', cat:'light', tag:'Light & Colour', desc:"Open rice fields at dusk, the sun setting behind a silhouetted pine."}
+  ];
+
+  const grid = document.getElementById('portGrid');
+  grid.innerHTML = photos.map((p,i) => `
+    <div class="port-card" data-cat="${p.cat}">
+      <div class="port-thumb" data-idx="${i}">
+        <img src="${p.src}" alt="${p.title}" loading="lazy">
+      </div>
+      <div class="port-info">
+        <h4>${p.title}</h4>
+        <p>${p.desc}</p>
+        <div class="exif">${p.tag}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  document.querySelectorAll('.port-thumb').forEach(el => {
+    el.addEventListener('click', () => {
+      const p = photos[el.dataset.idx];
+      lbImg.src = p.src; lbImg.alt = p.title;
+      lbCap.textContent = p.title + ' — ' + p.desc;
+      lightbox.classList.add('open');
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') lightbox.classList.remove('open'); });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); revealObserver.unobserve(e.target);} });
+  }, {threshold:0.12});
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Skill bars fill on scroll
+  const bars = document.querySelectorAll('.bar i');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.style.width = e.target.dataset.w + '%'; barObserver.unobserve(e.target); } });
+  }, {threshold:0.4});
+  bars.forEach(b => barObserver.observe(b));
+
+  // Gallery filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.port-card').forEach(card => {
+        const show = f === 'all' || card.dataset.cat === f;
+        card.classList.toggle('hidden', !show);
+      });
+    });
+  });
+
+  // Spine: current section + scroll progress
+  const spineCurrent = document.getElementById('spineCurrent');
+  const spineThread = document.getElementById('spineThread');
+  const sections = document.querySelectorAll('section[id]');
+  const sectionLabels = { home:'HOME', about:'ABOUT', skills:'SKILLS', journey:'JOURNEY', gallery:'GALLERY', courses:'COURSES', cv:'CV', contact:'CONTACT' };
+  const spineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ spineCurrent.innerHTML = '<span class="dot"></span>' + (sectionLabels[e.target.id] || e.target.id.toUpperCase()); } });
+  }, {rootMargin:'-45% 0px -45% 0px'});
+  sections.forEach(s => spineObserver.observe(s));
+
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    spineThread.style.setProperty('--prog', scrolled + '%');
+  });
+
+  // Contact form (placeholder submit)
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('formNote').classList.add('show');
+    e.target.reset();
+  });
+</script>
+
+</body>
+</html>
